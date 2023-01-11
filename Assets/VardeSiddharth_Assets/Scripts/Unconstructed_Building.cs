@@ -10,6 +10,10 @@ public class Unconstructed_Building : MonoBehaviour
     GameObject buildingToCreatePrefab;
     [SerializeField]
     Vector3 offsetToCreateBuilding = Vector3.up * 2;
+    [SerializeField]
+    float timeTowait = 0.3f;
+
+    float currentTimeToWait;
 
     [SerializeField]
     PlayerInventory playerInventoryComponent;
@@ -19,7 +23,7 @@ public class Unconstructed_Building : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentTimeToWait = timeTowait;
     }
 
     // Update is called once per frame
@@ -44,10 +48,12 @@ public class Unconstructed_Building : MonoBehaviour
 
             if(playerInventoryComponent != null)
             {
-                if (playerInventoryComponent.GetCurrentPoints() > 0)
+                currentTimeToWait -= Time.deltaTime;
+                if (playerInventoryComponent.GetCurrentPoints() > 0 && currentTimeToWait < 0)
                 {
                     playerInventoryComponent.useCurrentPoints();
                     requiredCurrencyToBuild--;
+                    currentTimeToWait = timeTowait;
 
                     if(requiredCurrencyToBuild <= 0)
                     {
