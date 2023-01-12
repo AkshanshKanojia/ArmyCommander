@@ -557,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878014364862405881, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
       propertyPath: currentPoints
-      value: 500
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4878014364862405886, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
       propertyPath: m_RootOrder
