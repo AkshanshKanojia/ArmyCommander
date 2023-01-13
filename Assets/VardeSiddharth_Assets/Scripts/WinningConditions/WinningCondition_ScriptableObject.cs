@@ -7,11 +7,11 @@ public class WinningCondition_ScriptableObject : ScriptableObject
 {
     public int numberOfEnemiesToKill;
 
-    public void ReduceEnemies()
-    {
-        if(numberOfEnemiesToKill > 0)
-        {
-            numberOfEnemiesToKill--;
-        }
-    }
+    //public void ReduceEnemies()
+    //{
+    //    if(numberOfEnemiesToKill > 0)
+    //    {
+    //        numberOfEnemiesToKill--;
+    //    }
+    //}
 }
