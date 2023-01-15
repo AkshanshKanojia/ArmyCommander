@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - dogTag
+  - Gold
   layers:
   - Default
   - TransparentFX

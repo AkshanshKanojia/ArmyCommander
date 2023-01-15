@@ -26,9 +26,18 @@ public class DogTagBehavoiur : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             if (Vector3.Distance(transform.position, target.position)<=0.2f)
             {
-                isMoving = false;
-                transform.parent = target;
-                target.GetComponent<DogTagPlacement>().PlaceDogTag(transform);
+                /* isMoving = false;
+                 transform.parent = target;
+                 target.GetComponent<DogTagPlacement>().PlaceDogTag(transform);*/
+                if(transform.tag=="Gold")
+                {
+                    target.GetComponent<CollectableUpdate>().AddGold();
+                }
+                else if(transform.tag == "dogTag")
+                {
+                    target.GetComponent<CollectableUpdate>().AddDogTag();
+                }
+                Destroy(gameObject);
             }
         }
 
