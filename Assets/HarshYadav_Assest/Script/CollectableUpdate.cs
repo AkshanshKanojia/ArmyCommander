@@ -106,6 +106,7 @@ public class CollectableUpdate : MonoBehaviour
 
         dogTagTransform.localScale = new Vector3(dogTagTransform.localScale.x,
             1 * sizeToIncrease * collectedDogTag, dogTagTransform.localScale.z);
+        print(dogTagTransform.localScale);
         dogTagTransform.localPosition = transform.localPosition + (Vector3.up * collectedDogTag * sizeToIncrease / 2);
         if (collectedGold > 0)
         {
