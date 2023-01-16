@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unconstructed_Building : MonoBehaviour
+public class Unconstructed_Building_VS : MonoBehaviour
 {
     [SerializeField]
     int requiredCurrencyToBuild = 10;
@@ -16,7 +16,7 @@ public class Unconstructed_Building : MonoBehaviour
     float currentTimeToWait;
 
     [SerializeField]
-    PlayerInventory playerInventoryComponent;
+    PlayerInventory_VS playerInventoryComponent;
 
 
 
@@ -36,7 +36,7 @@ public class Unconstructed_Building : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventoryComponent = other.GetComponent<PlayerInventory>();
+            playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
         }
     }
 

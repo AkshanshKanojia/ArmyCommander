@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow_VS : MonoBehaviour
 {
     [SerializeField]
     Vector3 cameraRotation = new Vector3(30, 0, 0);

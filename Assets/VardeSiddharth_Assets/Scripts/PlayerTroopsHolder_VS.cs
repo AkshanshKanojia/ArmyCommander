@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerTroopsHolder : MonoBehaviour
+public class PlayerTroopsHolder_VS : MonoBehaviour
 {
     public List<UpgradeOrderOfTroopsHolder> upgradeOrderList = new List<UpgradeOrderOfTroopsHolder>();
 
@@ -23,7 +23,7 @@ public class PlayerTroopsHolder : MonoBehaviour
     [SerializeField]
     float currentTimeToWait;
 
-    PlayerInventory playerInventoryComponent;
+    PlayerInventory_VS playerInventoryComponent;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +42,7 @@ public class PlayerTroopsHolder : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventoryComponent = other.GetComponent<PlayerInventory>();
+            playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
         }
     }
 

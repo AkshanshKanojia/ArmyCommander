@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckWinCondition : MonoBehaviour
+public class CheckWinCondition_VS : MonoBehaviour
 {
     //[SerializeField]
     //WinningCondition_ScriptableObject currentWinCondition;
