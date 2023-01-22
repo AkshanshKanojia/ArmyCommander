@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - dogTag
+  - Gold
   - WinFlag
   - Enemy
   layers:
