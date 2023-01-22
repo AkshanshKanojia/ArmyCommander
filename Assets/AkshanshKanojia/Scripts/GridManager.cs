@@ -102,17 +102,20 @@ namespace LevelEditor
                 for (int j = 0; j < zSize; j++)
                 {
                     gridVertices[_tempVertIndex] = new Vector3(i, 0, j) * cellSize + _tempTransform;
-                    gridVertices[_tempVertIndex] = Quaternion.Euler(transform.eulerAngles)* 
+                    gridVertices[_tempVertIndex] = Quaternion.Euler(transform.eulerAngles) *
                         gridVertices[_tempVertIndex];//apply rotation on vector
                     _tempVertIndex++;
                 }
             }
-            GetCellData();
+            if (xSize >= 1 && zSize >=1)
+                GetCellData();
 
         }
         public void ClearGrid()
         {
-            gridVertices = new Vector3[0];
+            xSize = 0;
+            zSize = 0;
+            cells.Clear();
         }
 
         public int GetNearestCellIndex(Vector3 _pos)
@@ -121,7 +124,7 @@ namespace LevelEditor
             for (int i = 0; i < cells.Count; i++)
             {
                 _pos.y = transform.position.y;//exclude y distance for snap
-                if (Vector3.Distance(_pos, cells[i].midPos) < cellSize/2)
+                if (Vector3.Distance(_pos, cells[i].midPos) < cellSize / 2)
                 {
                     return i;
                 }

@@ -457,106 +457,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellSize: 1.93
   updateWithObjectTransform: 1
-  xSize: 5
-  zSize: 5
+  xSize: 0
+  zSize: 0
   showInEditor: 1
   showFaceIndex: 1
   vertColor: {r: 1, g: 0, b: 0, a: 1}
   vertSize: 0.1
-  cells:
-  - bottomLeft: {x: 0, y: 0, z: 0}
-    topLeft: {x: 0, y: 0, z: 1.93}
-    bottomRight: {x: 1.93, y: 0, z: 0}
-    topRight: {x: 1.93, y: 0, z: 1.93}
-    midPos: {x: 0.965, y: 0, z: 0.965}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 0, y: 0, z: 1.93}
-    topLeft: {x: 0, y: 0, z: 3.86}
-    bottomRight: {x: 1.93, y: 0, z: 1.93}
-    topRight: {x: 1.93, y: 0, z: 3.86}
-    midPos: {x: 0.965, y: 0, z: 2.895}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 0, y: 0, z: 3.86}
-    topLeft: {x: 0, y: 0, z: 5.79}
-    bottomRight: {x: 1.93, y: 0, z: 3.86}
-    topRight: {x: 1.93, y: 0, z: 5.79}
-    midPos: {x: 0.96500003, y: 0, z: 4.825}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 0, y: 0, z: 5.79}
-    topLeft: {x: 0, y: 0, z: 7.72}
-    bottomRight: {x: 1.93, y: 0, z: 5.79}
-    topRight: {x: 1.93, y: 0, z: 7.72}
-    midPos: {x: 0.9649999, y: 0, z: 6.755}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 1.93, y: 0, z: 0}
-    topLeft: {x: 1.93, y: 0, z: 1.93}
-    bottomRight: {x: 3.86, y: 0, z: 0}
-    topRight: {x: 3.86, y: 0, z: 1.93}
-    midPos: {x: 2.895, y: 0, z: 0.965}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 1.93, y: 0, z: 1.93}
-    topLeft: {x: 1.93, y: 0, z: 3.86}
-    bottomRight: {x: 3.86, y: 0, z: 1.93}
-    topRight: {x: 3.86, y: 0, z: 3.86}
-    midPos: {x: 2.895, y: 0, z: 2.895}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 1.93, y: 0, z: 3.86}
-    topLeft: {x: 1.93, y: 0, z: 5.79}
-    bottomRight: {x: 3.86, y: 0, z: 3.86}
-    topRight: {x: 3.86, y: 0, z: 5.79}
-    midPos: {x: 2.895, y: 0, z: 4.825}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 1.93, y: 0, z: 5.79}
-    topLeft: {x: 1.93, y: 0, z: 7.72}
-    bottomRight: {x: 3.86, y: 0, z: 5.79}
-    topRight: {x: 3.86, y: 0, z: 7.72}
-    midPos: {x: 2.895, y: 0, z: 6.755}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 3.86, y: 0, z: 0}
-    topLeft: {x: 3.86, y: 0, z: 1.93}
-    bottomRight: {x: 5.79, y: 0, z: 0}
-    topRight: {x: 5.79, y: 0, z: 1.93}
-    midPos: {x: 4.825, y: 0, z: 0.965}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 3.86, y: 0, z: 1.93}
-    topLeft: {x: 3.86, y: 0, z: 3.86}
-    bottomRight: {x: 5.79, y: 0, z: 1.93}
-    topRight: {x: 5.79, y: 0, z: 3.86}
-    midPos: {x: 4.825, y: 0, z: 2.895}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 3.86, y: 0, z: 3.86}
-    topLeft: {x: 3.86, y: 0, z: 5.79}
-    bottomRight: {x: 5.79, y: 0, z: 3.86}
-    topRight: {x: 5.79, y: 0, z: 5.79}
-    midPos: {x: 4.825, y: 0, z: 4.825}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 3.86, y: 0, z: 5.79}
-    topLeft: {x: 3.86, y: 0, z: 7.72}
-    bottomRight: {x: 5.79, y: 0, z: 5.79}
-    topRight: {x: 5.79, y: 0, z: 7.72}
-    midPos: {x: 4.825, y: 0, z: 6.755}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 5.79, y: 0, z: 0}
-    topLeft: {x: 5.79, y: 0, z: 1.93}
-    bottomRight: {x: 7.72, y: 0, z: 0}
-    topRight: {x: 7.72, y: 0, z: 1.93}
-    midPos: {x: 6.755, y: 0, z: 0.965}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 5.79, y: 0, z: 1.93}
-    topLeft: {x: 5.79, y: 0, z: 3.86}
-    bottomRight: {x: 7.72, y: 0, z: 1.93}
-    topRight: {x: 7.72, y: 0, z: 3.86}
-    midPos: {x: 6.755, y: 0, z: 2.895}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 5.79, y: 0, z: 3.86}
-    topLeft: {x: 5.79, y: 0, z: 5.79}
-    bottomRight: {x: 7.72, y: 0, z: 3.86}
-    topRight: {x: 7.72, y: 0, z: 5.79}
-    midPos: {x: 6.755, y: 0, z: 4.825}
-    EntitiesInCell: 0
-  - bottomLeft: {x: 5.79, y: 0, z: 5.79}
-    topLeft: {x: 5.79, y: 0, z: 7.72}
-    bottomRight: {x: 7.72, y: 0, z: 5.79}
-    topRight: {x: 7.72, y: 0, z: 7.72}
-    midPos: {x: 6.755, y: 0, z: 6.755}
-    EntitiesInCell: 0
+  cells: []
