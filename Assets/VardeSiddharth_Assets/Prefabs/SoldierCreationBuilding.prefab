@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8349909873717869037}
   - component: {fileID: 8349909873717869036}
   - component: {fileID: 8349909873717869032}
+  - component: {fileID: 713793872}
   m_Layer: 6
   m_Name: SoldierCreationBuilding
   m_TagString: Untagged
@@ -114,3 +115,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &713793872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8349909873717869043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9e7611c616121b488cfac75436527bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allyPrefabRefrence: {fileID: 4061064335209899450, guid: caea66be42197b949931cf521050fee6, type: 3}
+  instanciatePoint: {x: 0, y: 0, z: 0.7}
+  timeToCreate: 1

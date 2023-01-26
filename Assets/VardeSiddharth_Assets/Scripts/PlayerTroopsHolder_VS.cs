@@ -10,7 +10,7 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     [SerializeField]
     int currentLevel = 0;
     [SerializeField]
-    int currentNumberOfTroops;
+    int currentNumberOfTroopsPlayerCanHave;
     //[SerializeField]
     //int maxNumberOfTroops = 30;
     //[SerializeField]
@@ -24,12 +24,21 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     float currentTimeToWait;
 
     PlayerInventory_VS playerInventoryComponent;
+    int currentNumberOfTroopsPlayerHas = 0;
+
+    //public delegate void CreateTroop(bool canCreate);
+    //public event CreateTroop setCanCreateTroops;
+
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        SetCurrentLevel(currentLevel);
+    }
     void Start()
     {
         currentTimeToWait = timeToWait;
 
-        SetCurrentLevel(currentLevel);
     }
 
     // Update is called once per frame
@@ -79,9 +88,32 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     {
         if (level < upgradeOrderList.Count)
         {
-            currentNumberOfTroops = upgradeOrderList[level].currentNumberOfTroops;
+            currentNumberOfTroopsPlayerCanHave = upgradeOrderList[level].currentNumberOfTroops;
             pointsRequireToIncreaseNumberOfTroops = upgradeOrderList[level].pointsRequireToUpgrade;
         }
+    }
+
+    public bool doesPlayerHaveFullTroops()
+    {
+        return currentNumberOfTroopsPlayerHas <= currentNumberOfTroopsPlayerCanHave;
+
+    }
+
+    public bool doesPlayerHaveNoTroops()
+    {
+        return currentNumberOfTroopsPlayerHas <= 0;
+    }
+
+    public bool OnTroopGenerated()
+    {
+        currentNumberOfTroopsPlayerHas++;
+        return doesPlayerHaveFullTroops();
+    }
+
+    public void OnTroopDied()
+    {
+        currentNumberOfTroopsPlayerHas--;
+        //return doesPlayerHaveNoTroops();
     }
 }
 
