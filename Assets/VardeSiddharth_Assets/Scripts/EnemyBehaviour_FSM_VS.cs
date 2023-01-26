@@ -27,10 +27,13 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         switch(enemyBehaviourState)
         {
             case EnemyBehaviurStates.Formation:
+                OnFormationState();
                 break;
             case EnemyBehaviurStates.Fight:
+                OnFightState();
                 break;
             case EnemyBehaviurStates.Deth:
+                OnDeathState();
                 break;
         }
     }
@@ -40,34 +43,64 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         if(health <= 0)
         {
             enemyBehaviourState = EnemyBehaviurStates.Deth;
+            return;
+        }
+
+        if(targetForEnemy != null)
+        {
+            enemyBehaviourState = EnemyBehaviurStates.Fight;
+            return;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Change the tag to the tag that you have decided to put on group of player Ally Troops
-        //if(other.tag == "PlayerTroopTag")
-        //{
-        //    targetForEnemy = other.transform;
-        //}
-        //else if(other.tag == "Player")
-        //{
-        //    targetForEnemy = other.transform;
-        //}
+        Debug.Log(other.name);
+
+        if (other.tag == "Ally")
+        {
+            targetForEnemy = other.transform.parent;
+            Debug.Log(targetForEnemy.name);
+
+        }
+        else if (other.tag == "Player" && targetForEnemy == null)
+        {
+            targetForEnemy = other.transform;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && targetForEnemy.tag == "Player")
         {
             targetForEnemy = null;
-            enemyBehaviourState = EnemyBehaviurStates.Formation;
         }
-        //else if(other.tag == "")
+        
     }
 
     void OnFightState()
     {
+        if(targetForEnemy == null)
+        {
+            enemyBehaviourState = EnemyBehaviurStates.Formation;
+            return;
+        }
+        
+        if(health <= 0)
+        {
+            enemyBehaviourState = EnemyBehaviurStates.Deth;
+            return;
+        }
 
+        // shoot towards player
+    }
+
+    void OnDeathState()
+    {
+        //spawn gold
+        //reduce the no. of enemies to kill from Check win condition script
+
+        Destroy(gameObject);
     }
 }
