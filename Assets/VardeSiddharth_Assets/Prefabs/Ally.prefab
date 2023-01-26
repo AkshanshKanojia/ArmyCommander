@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4061064335209899448}
   - component: {fileID: 4061064335209899449}
   - component: {fileID: 682724073}
+  - component: {fileID: 2054113243}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Ally
@@ -121,3 +122,15 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2054113243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061064335209899450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e306af9515847864d9d15407e4afee48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

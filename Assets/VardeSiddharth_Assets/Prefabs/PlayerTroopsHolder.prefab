@@ -122,7 +122,7 @@ MonoBehaviour:
   - currentNumberOfTroops: 30
     pointsRequireToUpgrade: 50
   currentLevel: 0
-  currentNumberOfTroops: 0
+  currentNumberOfTroopsPlayerCanHave: 0
   pointsRequireToIncreaseNumberOfTroops: 0
   timeToWait: 0.2
   currentTimeToWait: 0

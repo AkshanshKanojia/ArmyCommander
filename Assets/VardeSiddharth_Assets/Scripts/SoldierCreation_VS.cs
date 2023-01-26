@@ -14,10 +14,13 @@ public class SoldierCreation_VS : MonoBehaviour
     float currentTime;
     bool canCreate = false;
     PlayerTroopsHolder_VS playerTroopsHolder;
+    Transform playerTroopParent;
+
 
     private void Awake()
     {
         playerTroopsHolder = FindObjectOfType<PlayerTroopsHolder_VS>().GetComponent<PlayerTroopsHolder_VS>();
+        playerTroopParent = GameObject.FindGameObjectWithTag("PlayerGroup").transform;
     }
 
     // Start is called before the first frame update
@@ -58,7 +61,7 @@ public class SoldierCreation_VS : MonoBehaviour
         canCreate = playerTroopsHolder.OnTroopGenerated();
         if (canCreate)
         {
-            Instantiate(allyPrefabRefrence, transform.position + instanciatePoint, Quaternion.identity);
+            Instantiate(allyPrefabRefrence, transform.position + instanciatePoint, Quaternion.identity, playerTroopParent);
         }
     }
 }

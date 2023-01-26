@@ -40,13 +40,13 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
 
     void OnFormationState()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
             enemyBehaviourState = EnemyBehaviurStates.Deth;
             return;
         }
 
-        if(targetForEnemy != null)
+        if (targetForEnemy != null)
         {
             enemyBehaviourState = EnemyBehaviurStates.Fight;
             return;
@@ -56,7 +56,8 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Change the tag to the tag that you have decided to put on group of player Ally Troops
-        Debug.Log(other.name);
+
+        //Debug.Log(other.name);
 
         if (other.tag == "Ally")
         {
@@ -86,8 +87,8 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
             enemyBehaviourState = EnemyBehaviurStates.Formation;
             return;
         }
-        
-        if(health <= 0)
+
+        if (health <= 0)
         {
             enemyBehaviourState = EnemyBehaviurStates.Deth;
             return;
@@ -100,7 +101,6 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     {
         //spawn gold
         //reduce the no. of enemies to kill from Check win condition script
-
         Destroy(gameObject);
     }
 }

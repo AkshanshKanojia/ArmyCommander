@@ -13,7 +13,7 @@ public class CheckWinCondition_VS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         //if(numberOfEnemiesToKill == 0)
         //{
         //    Debug.Log("Define The number of enemies to kill");

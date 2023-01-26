@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public enum AllyStates
@@ -18,6 +19,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
 
     Transform targetTransform;
     Transform enemyToShootTowards;
+    NavMeshAgent navMeshAgent;
     //Vector3 targetPosition;
     int health = 100;
 
@@ -25,6 +27,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     void Start()
     {
         allyState = AllyStates.Upgrade;
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -55,6 +58,8 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         if(targetTransform == null)
         {
             //try to find the upgrade guns matchine gameobject
+            targetTransform = GameObject.FindGameObjectWithTag("UpgradeWepon").transform;
+            //Debug.Log(targetTransform.position + "  Name " + targetTransform.name);
         }
 
         if(targetTransform == null)
@@ -65,7 +70,17 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         else
         {
             //go to upgrade guns matchine gameobject
+            navMeshAgent.destination = targetTransform.position;
+            Debug.Log("Moving");
             //when reached 
+            if (Vector3.Distance(transform.position, targetTransform.position) < 1)
+            {
+                //upgrade the wepon
+                targetTransform = null;
+                Debug.Log("Formation state start");
+
+                allyState = AllyStates.Formation;
+            }
             //Access the shooting script and upgrade the wepon of ally
             //change target transform = null;
             //change the allyState to AllyStates.Formation
@@ -77,11 +92,14 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         if(targetTransform == null)
         {
             //try to get the position to stand in a grid
+            targetTransform = transform.parent; //GameObject.FindGameObjectWithTag("PlayerGroup").transform;
+            Debug.Log(targetTransform.name);
         }
 
         if(targetTransform != null)
         {
             // move towards target transform
+            navMeshAgent.destination = targetTransform.position;
             //when reached stop on the position and subscribe to the attackCommandEvent in player
             // and wait for it to be triggered
             // set the target transform to null
