@@ -900,6 +900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262072095}
+  - component: {fileID: 1262072096}
   m_Layer: 0
   m_Name: PlayerTroopsGroup
   m_TagString: PlayerGroup
@@ -915,13 +916,69 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262072094}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.94, y: 0, z: 10.3}
+  m_LocalPosition: {x: 8.94, y: 0.14, z: 10.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1262072096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262072094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e58f60502f9f2b40bcf8a3385ff6690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 1.5
+  updateWithObjectTransform: 1
+  xSize: 5
+  zSize: 2
+  showInEditor: 1
+  showFaceIndex: 0
+  vertColor: {r: 1, g: 0, b: 0, a: 1}
+  vertSize: 0.1
+  gridVertices:
+  - {x: 8.94, y: 0.14, z: 10.3}
+  - {x: 8.94, y: 0.14, z: 11.8}
+  - {x: 10.44, y: 0.14, z: 10.3}
+  - {x: 10.44, y: 0.14, z: 11.8}
+  - {x: 11.94, y: 0.14, z: 10.3}
+  - {x: 11.94, y: 0.14, z: 11.8}
+  - {x: 13.44, y: 0.14, z: 10.3}
+  - {x: 13.44, y: 0.14, z: 11.8}
+  - {x: 14.94, y: 0.14, z: 10.3}
+  - {x: 14.94, y: 0.14, z: 11.8}
+  cells:
+  - bottomLeft: {x: 8.94, y: 0.14, z: 10.3}
+    topLeft: {x: 8.94, y: 0.14, z: 11.8}
+    bottomRight: {x: 10.44, y: 0.14, z: 10.3}
+    topRight: {x: 10.44, y: 0.14, z: 11.8}
+    midPos: {x: 9.69, y: 0.14, z: 11.05}
+    EntitiesInCell: 0
+  - bottomLeft: {x: 10.44, y: 0.14, z: 10.3}
+    topLeft: {x: 10.44, y: 0.14, z: 11.8}
+    bottomRight: {x: 11.94, y: 0.14, z: 10.3}
+    topRight: {x: 11.94, y: 0.14, z: 11.8}
+    midPos: {x: 11.19, y: 0.14, z: 11.05}
+    EntitiesInCell: 0
+  - bottomLeft: {x: 11.94, y: 0.14, z: 10.3}
+    topLeft: {x: 11.94, y: 0.14, z: 11.8}
+    bottomRight: {x: 13.44, y: 0.14, z: 10.3}
+    topRight: {x: 13.44, y: 0.14, z: 11.8}
+    midPos: {x: 12.69, y: 0.14, z: 11.05}
+    EntitiesInCell: 0
+  - bottomLeft: {x: 13.44, y: 0.14, z: 10.3}
+    topLeft: {x: 13.44, y: 0.14, z: 11.8}
+    bottomRight: {x: 14.94, y: 0.14, z: 10.3}
+    topRight: {x: 14.94, y: 0.14, z: 11.8}
+    midPos: {x: 14.19, y: 0.14, z: 11.05}
+    EntitiesInCell: 0
 --- !u!1001 &1541443425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1495,7 +1552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802342782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.34, y: 1.11, z: 10.37}
+  m_LocalPosition: {x: -16.15, y: 1.11, z: 20.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1936,6 +1993,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ally
       objectReference: {fileID: 0}
+    - target: {fileID: 4061064335209899450, guid: caea66be42197b949931cf521050fee6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caea66be42197b949931cf521050fee6, type: 3}
 --- !u!1001 &4878014363760930500
@@ -2097,7 +2158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8208753163118103348, guid: c86bbac5d184219429968725a19a719a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 8208753163118103348, guid: c86bbac5d184219429968725a19a719a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2116,6 +2177,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 713793872, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
+      propertyPath: timeToCreate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 713793872, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
+      propertyPath: instanciatePoint.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8349909873717869039, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
       propertyPath: m_RootOrder
       value: 5

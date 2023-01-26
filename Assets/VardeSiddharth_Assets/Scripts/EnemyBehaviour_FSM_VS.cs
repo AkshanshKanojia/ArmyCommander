@@ -62,7 +62,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         if (other.tag == "Ally")
         {
             targetForEnemy = other.transform.parent;
-            Debug.Log(targetForEnemy.name);
+            //Debug.Log(targetForEnemy.name);
 
         }
         else if (other.tag == "Player" && targetForEnemy == null)

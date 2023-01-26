@@ -61,6 +61,7 @@ public class SoldierCreation_VS : MonoBehaviour
         canCreate = playerTroopsHolder.OnTroopGenerated();
         if (canCreate)
         {
+            AllyBehaviour_FSM_VS.indexToAsign++;
             Instantiate(allyPrefabRefrence, transform.position + instanciatePoint, Quaternion.identity, playerTroopParent);
         }
     }
