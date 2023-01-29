@@ -61,13 +61,22 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
 
         if (other.tag == "Ally")
         {
-            targetForEnemy = other.transform.parent;
+            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+            //Debug.Log(other.transform.parent.childCount);
             //Debug.Log(targetForEnemy.name);
 
         }
         else if (other.tag == "Player" && targetForEnemy == null)
         {
             targetForEnemy = other.transform;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Ally" && targetForEnemy == null)
+        {
+            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
         }
     }
 
@@ -78,6 +87,11 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
             targetForEnemy = null;
         }
         
+
+        if(other.tag == "Ally")
+        {
+            targetForEnemy = null;
+        }
     }
 
     void OnFightState()
@@ -95,6 +109,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         }
 
         // shoot towards player
+        //transform.rotation = 
     }
 
     void OnDeathState()
@@ -103,4 +118,6 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         //reduce the no. of enemies to kill from Check win condition script
         Destroy(gameObject);
     }
+
+
 }

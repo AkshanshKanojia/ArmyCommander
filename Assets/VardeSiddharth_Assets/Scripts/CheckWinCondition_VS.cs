@@ -10,6 +10,8 @@ public class CheckWinCondition_VS : MonoBehaviour
     //[SerializeField]
     int numberOfEnemiesToKill;
 
+    public static CheckWinCondition_VS CheckWinCondition_VS_Instance;
+
     // Start is called before the first frame update
     void Start()
     {
