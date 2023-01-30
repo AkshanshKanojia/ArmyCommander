@@ -8,6 +8,10 @@ TagManager:
   - Gold
   - WinFlag
   - Enemy
+  - Ally
+  - EnemyGroup
+  - UpgradeWepon
+  - PlayerGroup
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,7 @@ namespace LevelEditor
         #endregion
 
         #region Private Fields
-        Vector3[] gridVertices;
+         public Vector3[] gridVertices;
         #endregion
 
         //can be used to genrate faces if needed later
