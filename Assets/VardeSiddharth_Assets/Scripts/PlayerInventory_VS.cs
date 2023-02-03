@@ -6,6 +6,9 @@ public class PlayerInventory_VS : MonoBehaviour
 {
     [SerializeField]
     int currentPoints;
+
+    [SerializeField]
+    float health = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +29,14 @@ public class PlayerInventory_VS : MonoBehaviour
     public void useCurrentPoints()
     {
         currentPoints--;
+    }
+
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Debug.LogError("Game Over");
+        }
     }
 }

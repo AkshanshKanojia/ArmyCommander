@@ -24,16 +24,23 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     NavMeshAgent navMeshAgent;
     //Vector3 targetPosition;
     [SerializeField]
-    int health = 100;
+    float health = 100;
     [SerializeField]
     float range = 5;
 
     public static int indexToAsign = 0;
     public int index;
 
+    [SerializeField]
+    int activeGunIndex = 0;
+    GunScript gunScript;
+
+
     private void Awake()
     {
         index = indexToAsign - 1;
+        gunScript = transform.GetChild(activeGunIndex).GetComponent<GunScript>();
+        gunScript.gameObject.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -93,7 +100,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
                 //upgrade the wepon
                 targetTransform = null;
                 //Debug.Log("Formation state start");
-
+                
                 allyState = AllyStates.Formation;
             }
             //Access the shooting script and upgrade the wepon of ally
@@ -139,6 +146,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
 
     void OnMoveTowardsEnemyState()
     {
+        gunScript.StopShoot();
         if(targetTransform == null)
         {
             // try to get the position of the enemy group that is nearest
@@ -201,6 +209,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     {
         if(targetTransform == null)
         {
+            gunScript.StopShoot();
             allyState = AllyStates.MoveTowardsEnemy;
             Debug.Log("Fight to movetowards");
             return;
@@ -229,6 +238,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
                 //shoot towards enemy
                 transform.rotation = Quaternion.LookRotation(enemyToShootTowards.position - transform.position);
                 //shoot towards enemy
+                gunScript.StartShoot();
             }
         }
 
@@ -243,7 +253,13 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     {
         // spawn Dogtag
         //  Destroy gameObject
+        gunScript.StopShoot();
         Destroy(gameObject);
     }
 
+
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+    }
 }
