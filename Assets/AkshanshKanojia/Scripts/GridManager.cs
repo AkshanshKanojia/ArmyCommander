@@ -131,6 +131,14 @@ namespace LevelEditor
             }
             return -1;
         }
+
+        public void OnNumberOfTroopsChanged(int newNoOfTroops, int horizontalNoOfTroops)
+        {
+            xSize = horizontalNoOfTroops;
+            int z = (int)(newNoOfTroops / horizontalNoOfTroops);
+            zSize = z + ((newNoOfTroops - (horizontalNoOfTroops * z)) > 0 ? 1 : 0);
+            GenerateGrid();
+        }
         #endregion
     }
 }

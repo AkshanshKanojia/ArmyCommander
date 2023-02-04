@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using LevelEditor;
 
 public class PlayerTroopsHolder_VS : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     [SerializeField]
     float currentTimeToWait;
 
+    [SerializeField]
+    GridManager gridManager;
+
     PlayerInventory_VS playerInventoryComponent;
     int currentNumberOfTroopsPlayerHas = 0;
 
@@ -33,6 +37,10 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
 
     private void Awake()
     {
+        if(gridManager == null)
+        {
+            Debug.Log("Grid Manager Refrence is Missing");
+        }
         SetCurrentLevel(currentLevel);
     }
     void Start()
@@ -90,12 +98,13 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
         {
             currentNumberOfTroopsPlayerCanHave = upgradeOrderList[level].currentNumberOfTroops;
             pointsRequireToIncreaseNumberOfTroops = upgradeOrderList[level].pointsRequireToUpgrade;
+            gridManager.OnNumberOfTroopsChanged(newNoOfTroops: currentNumberOfTroopsPlayerCanHave, horizontalNoOfTroops: 5);
         }
     }
 
     public bool doesPlayerHaveFullTroops()
     {
-        return currentNumberOfTroopsPlayerHas <= currentNumberOfTroopsPlayerCanHave;
+        return currentNumberOfTroopsPlayerHas < currentNumberOfTroopsPlayerCanHave;
 
     }
 
@@ -110,7 +119,7 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
         return doesPlayerHaveFullTroops();
     }
 
-    public void OnTroopDied()
+    public void OnTroopAttackCalled()
     {
         currentNumberOfTroopsPlayerHas--;
         //return doesPlayerHaveNoTroops();

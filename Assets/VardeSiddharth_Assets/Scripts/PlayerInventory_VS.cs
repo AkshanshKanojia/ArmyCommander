@@ -9,6 +9,10 @@ public class PlayerInventory_VS : MonoBehaviour
 
     [SerializeField]
     float health = 100;
+
+    public delegate void playerAttackDeligate();
+    public event playerAttackDeligate OnPlayerAttckDelegateEvent;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,14 @@ public class PlayerInventory_VS : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPlayerAttckEventCalled()
+    {
+        if(OnPlayerAttckDelegateEvent != null)
+        {
+            OnPlayerAttckDelegateEvent();
+        }
     }
 
     public int GetCurrentPoints()

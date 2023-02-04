@@ -68,7 +68,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
 
         if (other.tag == "Ally")
         {
-            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+            targetForEnemy = other.transform;   //.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
             //Debug.Log(other.transform.parent.childCount);
             //Debug.Log(targetForEnemy.name);
 
@@ -83,7 +83,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     {
         if(other.tag == "Ally" && targetForEnemy == null)
         {
-            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+            targetForEnemy = other.transform;  //.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
         }
     }
 

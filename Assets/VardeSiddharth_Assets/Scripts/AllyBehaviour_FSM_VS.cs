@@ -29,23 +29,28 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     float range = 5;
 
     public static int indexToAsign = 0;
-    public int index;
+    public int index = -1;
 
     [SerializeField]
     int activeGunIndex = 0;
     GunScript gunScript;
+    PlayerInventory_VS player;
 
 
     private void Awake()
     {
-        index = indexToAsign - 1;
+        //index = indexToAsign - 1;
         gunScript = transform.GetChild(activeGunIndex).GetComponent<GunScript>();
         gunScript.gameObject.SetActive(true);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory_VS>();
+        
+        //player.OnPlayerAttckDelegateEvent += StartAttack;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        index = -1;
         allyState = AllyStates.Upgrade;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -111,6 +116,14 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
 
     void OnFormationState()
     {
+        if(index < 0)
+        {
+            indexToAsign++;
+            index = indexToAsign - 1;
+            player.OnPlayerAttckDelegateEvent += StartAttack;
+
+        }
+
         if(targetTransform == null)
         {
             //try to get the position to stand in a grid
@@ -141,6 +154,10 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     void StartAttack()
     {
         targetTransform = null;
+        index = -1;
+        indexToAsign = 0;
+        player.OnPlayerAttckDelegateEvent -= StartAttack;
+        FindObjectOfType<PlayerTroopsHolder_VS>().OnTroopAttackCalled();
         allyState = AllyStates.MoveTowardsEnemy;
     }
 
@@ -253,7 +270,9 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     {
         // spawn Dogtag
         //  Destroy gameObject
+        player.OnPlayerAttckDelegateEvent -= StartAttack;
         gunScript.StopShoot();
+        //FindObjectOfType<PlayerTroopsHolder_VS>().OnTroopDied();
         Destroy(gameObject);
     }
 
