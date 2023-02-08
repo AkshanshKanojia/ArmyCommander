@@ -36,6 +36,8 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     GunScript gunScript;
     PlayerInventory_VS player;
 
+    [SerializeField]
+    GameObject dogTagPrefabToSpawn;
 
     private void Awake()
     {
@@ -269,6 +271,15 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     void OnDethState()
     {
         // spawn Dogtag
+        if(dogTagPrefabToSpawn != null)
+        {
+            Instantiate(dogTagPrefabToSpawn, transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Dog tag prefab to spawn is null");
+        }
+
         //  Destroy gameObject
         player.OnPlayerAttckDelegateEvent -= StartAttack;
         gunScript.StopShoot();

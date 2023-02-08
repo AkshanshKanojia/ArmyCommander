@@ -19,6 +19,9 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     int weponIndex = 0;
     GunScript gunScriptOfEnemy;
 
+    [SerializeField]
+    GameObject goldPrefabToSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +88,10 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         {
             targetForEnemy = other.transform;  //.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
         }
+        else if (other.tag == "Player" && targetForEnemy == null)
+        {
+            targetForEnemy = other.transform;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -127,6 +134,14 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     {
         //spawn gold
         //reduce the no. of enemies to kill from Check win condition script
+        if(goldPrefabToSpawn != null)
+        {
+            Instantiate(goldPrefabToSpawn, transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Gold Prefab to spawn is null");
+        }
         CheckWinCondition_VS.checkWinCondition_VS_instance.OnEnemyKilled();
         gunScriptOfEnemy.StopShoot();
         Destroy(gameObject);

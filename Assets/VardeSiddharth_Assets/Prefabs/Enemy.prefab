@@ -115,7 +115,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2575724839059393159
 MonoBehaviour:
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weponIndex: 0
+  goldPrefabToSpawn: {fileID: 1410114312471732326, guid: 14b037cb9dd3cd24caf9f8bfbe7d10c7, type: 3}
 --- !u!54 &487761410
 Rigidbody:
   m_ObjectHideFlags: 0
