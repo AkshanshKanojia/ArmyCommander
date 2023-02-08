@@ -27,7 +27,8 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     [SerializeField]
     GridManager gridManager;
 
-    PlayerInventory_VS playerInventoryComponent;
+    //PlayerInventory_VS playerInventoryComponent;
+    CollectableUpdate collectableUpdateComponent;
     int currentNumberOfTroopsPlayerHas = 0;
 
     //public delegate void CreateTroop(bool canCreate);
@@ -59,7 +60,8 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            //playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            collectableUpdateComponent = other.transform.GetChild(0).GetComponent<CollectableUpdate>();
         }
     }
 
@@ -67,12 +69,13 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(playerInventoryComponent != null && currentLevel < upgradeOrderList.Count)
+            if(collectableUpdateComponent != null && currentLevel < upgradeOrderList.Count)
             {
                 currentTimeToWait -= Time.deltaTime;
-                if(playerInventoryComponent.GetCurrentPoints() > 0 && currentTimeToWait < 0)
+                if(collectableUpdateComponent.GetGold() > 0 && currentTimeToWait < 0)
                 {
-                    playerInventoryComponent.useCurrentPoints();
+                    //playerInventoryComponent.useCurrentPoints();
+                    collectableUpdateComponent.RemoveGold();
                     if (pointsRequireToIncreaseNumberOfTroops > 0)
                     {
                         pointsRequireToIncreaseNumberOfTroops--;

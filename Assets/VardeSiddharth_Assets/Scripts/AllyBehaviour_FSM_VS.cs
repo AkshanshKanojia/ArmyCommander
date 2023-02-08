@@ -105,6 +105,11 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
             if (Vector3.Distance(transform.position, targetTransform.position) < 1)
             {
                 //upgrade the wepon
+                gunScript.StopShoot();
+                gunScript.gameObject.SetActive(false);
+                activeGunIndex++;
+                gunScript = transform.GetChild(activeGunIndex).GetComponent<GunScript>();
+                gunScript.gameObject.SetActive(true);
                 targetTransform = null;
                 //Debug.Log("Formation state start");
                 
