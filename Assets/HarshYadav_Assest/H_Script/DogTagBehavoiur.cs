@@ -41,6 +41,11 @@ public class DogTagBehavoiur : MonoBehaviour
             }
         }
 
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
+
     }
     public void OnTriggerEnter(Collider other)
     {

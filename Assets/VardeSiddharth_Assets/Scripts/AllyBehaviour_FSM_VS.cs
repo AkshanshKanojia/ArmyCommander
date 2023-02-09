@@ -39,6 +39,8 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     [SerializeField]
     GameObject dogTagPrefabToSpawn;
 
+    bool isBuffed = false;
+
     private void Awake()
     {
         //index = indexToAsign - 1;
@@ -87,8 +89,15 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         if(targetTransform == null)
         {
             //try to find the upgrade guns matchine gameobject
-            targetTransform = GameObject.FindGameObjectWithTag("UpgradeWepon").transform;
+            GameObject temp = GameObject.FindGameObjectWithTag("UpgradeWepon");
+            if(temp != null)
+            {
+                targetTransform = temp.transform;
+            }
+            //targetTransform = GameObject.FindGameObjectWithTag("UpgradeWepon").transform;
+            
             //Debug.Log(targetTransform.position + "  Name " + targetTransform.name);
+            //Debug.Log("Trying to find target");
         }
 
         if(targetTransform == null)
@@ -292,9 +301,17 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetIsBuffed(bool isBuffed)
+    {
+        this.isBuffed = isBuffed;
+    }
 
     public void GetDamage(float damage)
     {
+        if(isBuffed)
+        {
+            damage -= 1;
+        }
         health -= damage;
     }
 }

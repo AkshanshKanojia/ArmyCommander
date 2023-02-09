@@ -74,6 +74,5 @@ public class PlayerInventory_VS : MonoBehaviour
             }
             timeRemainingToRegainHelth = timeToRegainHelth;
         }
-
     }
 }
