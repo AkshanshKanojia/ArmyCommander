@@ -19,7 +19,7 @@ public class SoldierCreation_VS : MonoBehaviour
 
     private void Awake()
     {
-        playerTroopsHolder = FindObjectOfType<PlayerTroopsHolder_VS>().GetComponent<PlayerTroopsHolder_VS>();
+        playerTroopsHolder = FindObjectOfType<PlayerTroopsHolder_VS>();
         playerTroopParent = GameObject.FindGameObjectWithTag("PlayerGroup").transform;
     }
 
@@ -38,6 +38,7 @@ public class SoldierCreation_VS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canCreate = playerTroopsHolder.doesPlayerHaveFullTroops();
         if(canCreate)
         {
             currentTime -= Time.deltaTime;
@@ -58,11 +59,12 @@ public class SoldierCreation_VS : MonoBehaviour
 
     public void CreateAllyTroop()
     {
-        canCreate = playerTroopsHolder.OnTroopGenerated();
+        canCreate = playerTroopsHolder.doesPlayerHaveFullTroops();
         if (canCreate)
         {
-            AllyBehaviour_FSM_VS.indexToAsign++;
+            //AllyBehaviour_FSM_VS.indexToAsign++;
             Instantiate(allyPrefabRefrence, transform.position + instanciatePoint, Quaternion.identity, playerTroopParent);
+            playerTroopsHolder.OnTroopGenerated();
         }
     }
 }

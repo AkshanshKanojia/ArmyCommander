@@ -111,6 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requiredCurrencyToBuild: 10
-  buildingToCreatePrefab: {fileID: 8349909873717869043, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
+  buildingToCreatePrefab: {fileID: 0}
   offsetToCreateBuilding: {x: 0, y: 2, z: 0}
-  playerInventoryComponent: {fileID: 0}
+  timeTowait: 0.3

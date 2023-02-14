@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using LevelEditor;
 
 public class PlayerTroopsHolder_VS : MonoBehaviour
 {
@@ -23,7 +24,11 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     [SerializeField]
     float currentTimeToWait;
 
-    PlayerInventory_VS playerInventoryComponent;
+    [SerializeField]
+    GridManager gridManager;
+
+    //PlayerInventory_VS playerInventoryComponent;
+    CollectableUpdate collectableUpdateComponent;
     int currentNumberOfTroopsPlayerHas = 0;
 
     //public delegate void CreateTroop(bool canCreate);
@@ -33,6 +38,10 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
 
     private void Awake()
     {
+        if(gridManager == null)
+        {
+            Debug.Log("Grid Manager Refrence is Missing");
+        }
         SetCurrentLevel(currentLevel);
     }
     void Start()
@@ -51,7 +60,8 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            //playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            collectableUpdateComponent = other.transform.GetChild(0).GetComponent<CollectableUpdate>();
         }
     }
 
@@ -59,12 +69,13 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(playerInventoryComponent != null && currentLevel < upgradeOrderList.Count)
+            if(collectableUpdateComponent != null && currentLevel < upgradeOrderList.Count)
             {
                 currentTimeToWait -= Time.deltaTime;
-                if(playerInventoryComponent.GetCurrentPoints() > 0 && currentTimeToWait < 0)
+                if(collectableUpdateComponent.GetGold() > 0 && currentTimeToWait < 0)
                 {
-                    playerInventoryComponent.useCurrentPoints();
+                    //playerInventoryComponent.useCurrentPoints();
+                    collectableUpdateComponent.RemoveGold();
                     if (pointsRequireToIncreaseNumberOfTroops > 0)
                     {
                         pointsRequireToIncreaseNumberOfTroops--;
@@ -90,12 +101,13 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
         {
             currentNumberOfTroopsPlayerCanHave = upgradeOrderList[level].currentNumberOfTroops;
             pointsRequireToIncreaseNumberOfTroops = upgradeOrderList[level].pointsRequireToUpgrade;
+            gridManager.OnNumberOfTroopsChanged(newNoOfTroops: currentNumberOfTroopsPlayerCanHave, horizontalNoOfTroops: 5);
         }
     }
 
     public bool doesPlayerHaveFullTroops()
     {
-        return currentNumberOfTroopsPlayerHas <= currentNumberOfTroopsPlayerCanHave;
+        return currentNumberOfTroopsPlayerHas < currentNumberOfTroopsPlayerCanHave;
 
     }
 
@@ -110,7 +122,7 @@ public class PlayerTroopsHolder_VS : MonoBehaviour
         return doesPlayerHaveFullTroops();
     }
 
-    public void OnTroopDied()
+    public void OnTroopAttackCalled()
     {
         currentNumberOfTroopsPlayerHas--;
         //return doesPlayerHaveNoTroops();

@@ -15,8 +15,9 @@ public class Unconstructed_Building_VS : MonoBehaviour
 
     float currentTimeToWait;
 
-    [SerializeField]
-    PlayerInventory_VS playerInventoryComponent;
+    //[SerializeField]
+    //PlayerInventory_VS playerInventoryComponent;
+    CollectableUpdate collectableUpdateComponent;
 
 
 
@@ -36,7 +37,8 @@ public class Unconstructed_Building_VS : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            //playerInventoryComponent = other.GetComponent<PlayerInventory_VS>();
+            collectableUpdateComponent = other.transform.GetChild(0).GetComponent<CollectableUpdate>();
         }
     }
 
@@ -46,12 +48,13 @@ public class Unconstructed_Building_VS : MonoBehaviour
         {
             //remove player points if exists
 
-            if(playerInventoryComponent != null)
+            if(collectableUpdateComponent != null)
             {
                 currentTimeToWait -= Time.deltaTime;
-                if (playerInventoryComponent.GetCurrentPoints() > 0 && currentTimeToWait < 0)
+                if (collectableUpdateComponent.GetDogTag() > 0 && currentTimeToWait < 0)
                 {
-                    playerInventoryComponent.useCurrentPoints();
+                    //playerInventoryComponent.useCurrentPoints();
+                    collectableUpdateComponent.RemoveDogTag();
                     requiredCurrencyToBuild--;
                     currentTimeToWait = timeTowait;
 

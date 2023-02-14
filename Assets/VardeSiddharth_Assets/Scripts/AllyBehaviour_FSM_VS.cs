@@ -24,21 +24,37 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     NavMeshAgent navMeshAgent;
     //Vector3 targetPosition;
     [SerializeField]
-    int health = 100;
+    float health = 100;
     [SerializeField]
     float range = 5;
 
     public static int indexToAsign = 0;
-    public int index;
+    public int index = -1;
+
+    [SerializeField]
+    int activeGunIndex = 0;
+    GunScript gunScript;
+    PlayerInventory_VS player;
+
+    [SerializeField]
+    GameObject dogTagPrefabToSpawn;
+
+    bool isBuffed = false;
 
     private void Awake()
     {
-        index = indexToAsign - 1;
+        //index = indexToAsign - 1;
+        gunScript = transform.GetChild(activeGunIndex).GetComponent<GunScript>();
+        gunScript.gameObject.SetActive(true);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory_VS>();
+        
+        //player.OnPlayerAttckDelegateEvent += StartAttack;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        index = -1;
         allyState = AllyStates.Upgrade;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
@@ -73,8 +89,15 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
         if(targetTransform == null)
         {
             //try to find the upgrade guns matchine gameobject
-            targetTransform = GameObject.FindGameObjectWithTag("UpgradeWepon").transform;
+            GameObject temp = GameObject.FindGameObjectWithTag("UpgradeWepon");
+            if(temp != null)
+            {
+                targetTransform = temp.transform;
+            }
+            //targetTransform = GameObject.FindGameObjectWithTag("UpgradeWepon").transform;
+            
             //Debug.Log(targetTransform.position + "  Name " + targetTransform.name);
+            //Debug.Log("Trying to find target");
         }
 
         if(targetTransform == null)
@@ -91,9 +114,14 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
             if (Vector3.Distance(transform.position, targetTransform.position) < 1)
             {
                 //upgrade the wepon
+                gunScript.StopShoot();
+                gunScript.gameObject.SetActive(false);
+                activeGunIndex++;
+                gunScript = transform.GetChild(activeGunIndex).GetComponent<GunScript>();
+                gunScript.gameObject.SetActive(true);
                 targetTransform = null;
                 //Debug.Log("Formation state start");
-
+                
                 allyState = AllyStates.Formation;
             }
             //Access the shooting script and upgrade the wepon of ally
@@ -104,6 +132,14 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
 
     void OnFormationState()
     {
+        if(index < 0)
+        {
+            indexToAsign++;
+            index = indexToAsign - 1;
+            player.OnPlayerAttckDelegateEvent += StartAttack;
+
+        }
+
         if(targetTransform == null)
         {
             //try to get the position to stand in a grid
@@ -134,11 +170,16 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     void StartAttack()
     {
         targetTransform = null;
+        index = -1;
+        indexToAsign = 0;
+        player.OnPlayerAttckDelegateEvent -= StartAttack;
+        FindObjectOfType<PlayerTroopsHolder_VS>().OnTroopAttackCalled();
         allyState = AllyStates.MoveTowardsEnemy;
     }
 
     void OnMoveTowardsEnemyState()
     {
+        gunScript.StopShoot();
         if(targetTransform == null)
         {
             // try to get the position of the enemy group that is nearest
@@ -201,6 +242,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     {
         if(targetTransform == null)
         {
+            gunScript.StopShoot();
             allyState = AllyStates.MoveTowardsEnemy;
             Debug.Log("Fight to movetowards");
             return;
@@ -229,6 +271,7 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
                 //shoot towards enemy
                 transform.rotation = Quaternion.LookRotation(enemyToShootTowards.position - transform.position);
                 //shoot towards enemy
+                gunScript.StartShoot();
             }
         }
 
@@ -242,8 +285,33 @@ public class AllyBehaviour_FSM_VS : MonoBehaviour
     void OnDethState()
     {
         // spawn Dogtag
+        if(dogTagPrefabToSpawn != null)
+        {
+            Instantiate(dogTagPrefabToSpawn, transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Dog tag prefab to spawn is null");
+        }
+
         //  Destroy gameObject
+        player.OnPlayerAttckDelegateEvent -= StartAttack;
+        gunScript.StopShoot();
+        //FindObjectOfType<PlayerTroopsHolder_VS>().OnTroopDied();
         Destroy(gameObject);
     }
 
+    public void SetIsBuffed(bool isBuffed)
+    {
+        this.isBuffed = isBuffed;
+    }
+
+    public void GetDamage(float damage)
+    {
+        if(isBuffed)
+        {
+            damage -= 1;
+        }
+        health -= damage;
+    }
 }

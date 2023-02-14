@@ -126,3 +126,4 @@ MonoBehaviour:
   pointsRequireToIncreaseNumberOfTroops: 0
   timeToWait: 0.2
   currentTimeToWait: 0
+  gridManager: {fileID: 0}

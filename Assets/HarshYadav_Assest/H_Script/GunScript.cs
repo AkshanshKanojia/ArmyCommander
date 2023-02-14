@@ -9,22 +9,14 @@ public class GunScript : MonoBehaviour
 
     [SerializeField] 
     Transform bulletSpawnPoint;// spawnPoint of the bullet 
-
     [SerializeField]
     GameObject bulletPrfb;// bullet prefab
-
-    
-   public float fireRate = 1.0f;//FireRate Variable.
+    [SerializeField]
+    float fireRate = 1.0f;//FireRate Variable.
 
     float fireTime, currentTimeToFire;// fire time per sec.&& // tells you the current fire rate
-
-
-
     bool canFire = false;// bool for bullet firing.
 
-    
-    
-    
     void Start()
     {
         if(fireRate<=0)
@@ -33,14 +25,11 @@ public class GunScript : MonoBehaviour
         }
         fireTime = 1 / fireRate;
         currentTimeToFire = 0;
-        //StartShoot();
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-      
         if(canFire)
         {
             currentTimeToFire += Time.deltaTime;
@@ -49,24 +38,17 @@ public class GunScript : MonoBehaviour
             {
                 Instantiate(bulletPrfb, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 currentTimeToFire = 0;
-
             }
-
         }
-            
     }
     public void StartShoot()
     {
         canFire = true;
-
     }
     public void StopShoot()
     {
         canFire = false;
-    }
-       
-        
-        
+    }        
 }
            
             

@@ -7,6 +7,8 @@ public class RPGDamagerScript : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     float life = 1;
+    [SerializeField]
+    int damage = 3;
     void Start()
     {
         Destroy(gameObject, life);
@@ -23,6 +25,7 @@ public class RPGDamagerScript : MonoBehaviour
         if(other.tag=="Enemy")
         {
             //Damage Enemy.
+            other.GetComponent<EnemyBehaviour_FSM_VS>().GetDamage(damage: damage);
         }
         //Debug.Log(other.name);
         

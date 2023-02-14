@@ -21,6 +21,8 @@ public class PlayerController_VS : MonoBehaviour
 
     Vector3 movingInDirectionSpriteNewPosition;
 
+    bool shouldRotate = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,8 +72,11 @@ public class PlayerController_VS : MonoBehaviour
         {
             //SetMovingInDirectionSpritePosition();
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                Quaternion.LookRotation(playerInputDirection), playerRotateSpeed * Time.deltaTime);
+            if (shouldRotate == true)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                    Quaternion.LookRotation(playerInputDirection), playerRotateSpeed * Time.deltaTime);
+            }
 
             //transform.position += transform.forward * playerMoveSpeed * Time.deltaTime;
 
@@ -97,5 +102,10 @@ public class PlayerController_VS : MonoBehaviour
 
             movingInDirectionSpriteTransform.position = movingInDirectionSpriteNewPosition;
         }
+    }
+
+    public void SetShouldRotate(bool value)
+    {
+        shouldRotate = value;
     }
 }

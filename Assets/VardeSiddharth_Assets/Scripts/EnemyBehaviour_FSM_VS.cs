@@ -11,14 +11,23 @@ public enum EnemyBehaviurStates
 
 public class EnemyBehaviour_FSM_VS : MonoBehaviour
 {
-    int health = 100;
+    float health = 100;
     Transform targetForEnemy;
     EnemyBehaviurStates enemyBehaviourState = new EnemyBehaviurStates();
+
+    [SerializeField]
+    int weponIndex = 0;
+    GunScript gunScriptOfEnemy;
+
+    [SerializeField]
+    GameObject goldPrefabToSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyBehaviourState = EnemyBehaviurStates.Formation;
+        gunScriptOfEnemy = transform.GetChild(weponIndex).GetComponent<GunScript>();
+        gunScriptOfEnemy.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -40,6 +49,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
 
     void OnFormationState()
     {
+        gunScriptOfEnemy.StopShoot();
         if (health <= 0)
         {
             enemyBehaviourState = EnemyBehaviurStates.Deth;
@@ -61,7 +71,7 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
 
         if (other.tag == "Ally")
         {
-            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+            targetForEnemy = other.transform;   //.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
             //Debug.Log(other.transform.parent.childCount);
             //Debug.Log(targetForEnemy.name);
 
@@ -76,15 +86,22 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
     {
         if(other.tag == "Ally" && targetForEnemy == null)
         {
-            targetForEnemy = other.transform.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+            targetForEnemy = other.transform;  //.parent.GetChild(Random.Range(0, other.transform.parent.childCount));
+        }
+        else if (other.tag == "Player" && targetForEnemy == null)
+        {
+            targetForEnemy = other.transform;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player" && targetForEnemy.tag == "Player")
+        if (targetForEnemy != null)
         {
-            targetForEnemy = null;
+            if (other.tag == "Player" && targetForEnemy.tag == "Player")
+            {
+                targetForEnemy = null;
+            }
         }
         
 
@@ -109,15 +126,30 @@ public class EnemyBehaviour_FSM_VS : MonoBehaviour
         }
 
         // shoot towards player
-        //transform.rotation = 
+        transform.rotation = Quaternion.LookRotation(targetForEnemy.position - transform.position);
+        gunScriptOfEnemy.StartShoot();
     }
 
     void OnDeathState()
     {
         //spawn gold
         //reduce the no. of enemies to kill from Check win condition script
+        if(goldPrefabToSpawn != null)
+        {
+            Instantiate(goldPrefabToSpawn, transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Gold Prefab to spawn is null");
+        }
+        CheckWinCondition_VS.checkWinCondition_VS_instance.OnEnemyKilled();
+        gunScriptOfEnemy.StopShoot();
         Destroy(gameObject);
     }
 
+    public void GetDamage(float damage)
+    {
+        health -= damage;
+    }
 
 }
