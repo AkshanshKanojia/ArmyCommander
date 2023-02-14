@@ -842,14 +842,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802342783}
     m_Modifications:
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2575724839408943586, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -927,14 +919,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802342783}
     m_Modifications:
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2575724839408943586, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -1077,14 +1061,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802342783}
     m_Modifications:
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2575724839408943586, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -1510,14 +1486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1802342783}
     m_Modifications:
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 487761410, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2575724839408943586, guid: 8c2967dbc903e9e43934e1bbe6195a96, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
