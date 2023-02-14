@@ -128,5 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allyPrefabRefrence: {fileID: 4061064335209899450, guid: caea66be42197b949931cf521050fee6, type: 3}
-  instanciatePoint: {x: 0, y: 0, z: 0.7}
-  timeToCreate: 1
+  instanciatePoint: {x: 0, y: 0, z: 1.5}
+  timeToCreate: 3

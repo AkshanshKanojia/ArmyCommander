@@ -22,13 +22,16 @@ public class PlayerShoot_VS : MonoBehaviour
     {
         if(enemyToShoot != null)
         {
-            transform.rotation = Quaternion.LookRotation(enemyToShoot.position - transform.position);
+            transform.parent.GetComponent<PlayerController_VS>().SetShouldRotate(false);
+            transform.parent.rotation = Quaternion.LookRotation(enemyToShoot.position - transform.position);
+            //transform.rotation = Quaternion.LookRotation(enemyToShoot.position - transform.position);
             //transform.localRotation = Quaternion.Euler(0, (enemyToShoot.position - transform.position).y, 0);
             playerGun.StartShoot();
         }
         else
         {
-            transform.rotation = Quaternion.LookRotation(transform.parent.forward);
+            transform.parent.GetComponent<PlayerController_VS>().SetShouldRotate(true);
+            //transform.rotation = Quaternion.LookRotation(transform.parent.forward);
             playerGun.StopShoot();
         }
     }

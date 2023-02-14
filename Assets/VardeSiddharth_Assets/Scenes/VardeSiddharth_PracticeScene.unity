@@ -2331,33 +2331,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 111170752, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 111170752, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_Constraints
-      value: 94
-      objectReference: {fileID: 0}
-    - target: {fileID: 111170752, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1018156409295705797, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4878014364862405874, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
       propertyPath: m_Name
       value: Player_Temp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878014364862405880, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_Drag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878014364862405880, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_AngularDrag
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878014364862405886, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
       propertyPath: m_RootOrder
@@ -2401,22 +2377,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878014364862405886, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7448268604837409540, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7448268604837409540, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7448268604837409540, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7448268604837409540, guid: 602266ffc4c05004b99822c877bafd1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2599,14 +2559,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 713793872, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
-      propertyPath: timeToCreate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 713793872, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
-      propertyPath: instanciatePoint.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8349909873717869039, guid: 2df2737aa44f90e45babfb53eae1dfb6, type: 3}
       propertyPath: m_RootOrder
       value: 4
