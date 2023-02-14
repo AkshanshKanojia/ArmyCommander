@@ -53,13 +53,13 @@ public class CollectableUpdate : MonoBehaviour
     }
     public void RemoveGold()
     {
-        if(collectedGold<=0)
+        collectedGold--;
+        if (collectedGold<=0)
         {
             goldTransform.gameObject.SetActive(false);
             collectedGold = 0;
             return;
         }
-        collectedGold--;
         ResizeGold();
     }
 
@@ -89,13 +89,13 @@ public class CollectableUpdate : MonoBehaviour
 
     public void RemoveDogTag()
     {
-        if(collectedDogTag <=0)
+        collectedDogTag--;
+        if (collectedDogTag <=0)
         {
             dogTagTransform.gameObject.SetActive(false);
             collectedDogTag = 0;
             return;
         }
-        collectedDogTag--;
         ResizeDogTag();
     }
 

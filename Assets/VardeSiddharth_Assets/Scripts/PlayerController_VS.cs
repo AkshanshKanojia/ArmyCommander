@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController_VS : MonoBehaviour
 {
     Animator playerAnimator;
     float playerAnimationSpeed;
@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     Transform movingInDirectionSpriteTransform;
 
     Vector3 movingInDirectionSpriteNewPosition;
+
+    bool shouldRotate = true;
 
 
     // Start is called before the first frame update
@@ -70,8 +72,11 @@ public class PlayerController : MonoBehaviour
         {
             //SetMovingInDirectionSpritePosition();
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,
-                Quaternion.LookRotation(playerInputDirection), playerRotateSpeed * Time.deltaTime);
+            if (shouldRotate == true)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation,
+                    Quaternion.LookRotation(playerInputDirection), playerRotateSpeed * Time.deltaTime);
+            }
 
             //transform.position += transform.forward * playerMoveSpeed * Time.deltaTime;
 
@@ -97,5 +102,10 @@ public class PlayerController : MonoBehaviour
 
             movingInDirectionSpriteTransform.position = movingInDirectionSpriteNewPosition;
         }
+    }
+
+    public void SetShouldRotate(bool value)
+    {
+        shouldRotate = value;
     }
 }

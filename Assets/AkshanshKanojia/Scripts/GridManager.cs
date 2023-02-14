@@ -20,7 +20,7 @@ namespace LevelEditor
         #endregion
 
         #region Private Fields
-        Vector3[] gridVertices;
+         public Vector3[] gridVertices;
         #endregion
 
         //can be used to genrate faces if needed later
@@ -130,6 +130,14 @@ namespace LevelEditor
                 }
             }
             return -1;
+        }
+
+        public void OnNumberOfTroopsChanged(int newNoOfTroops, int horizontalNoOfTroops)
+        {
+            xSize = horizontalNoOfTroops;
+            int z = (int)(newNoOfTroops / horizontalNoOfTroops);
+            zSize = z + ((newNoOfTroops - (horizontalNoOfTroops * z)) > 0 ? 1 : 0);
+            GenerateGrid();
         }
         #endregion
     }

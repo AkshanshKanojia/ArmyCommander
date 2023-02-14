@@ -41,6 +41,11 @@ public class DogTagBehavoiur : MonoBehaviour
             }
         }
 
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
+
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -49,6 +54,16 @@ public class DogTagBehavoiur : MonoBehaviour
             target = other.transform.GetChild(0);
             isMoving = true;
             print(other.transform.GetChild(0).name);
+            Destroy(GetComponent<Rigidbody>());
+            //Destroy(GetComponent<BoxCollider>());
+            BoxCollider[] boxColliders = GetComponents<BoxCollider>();
+            for(int i = 0; i < boxColliders.Length; i++)
+            {
+                if(boxColliders[i] != this)
+                {
+                    Destroy(boxColliders[i]);
+                }
+            }
         }
     }
         

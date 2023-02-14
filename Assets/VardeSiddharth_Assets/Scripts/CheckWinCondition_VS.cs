@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class CheckWinCondition_VS : MonoBehaviour
 {
-    //[SerializeField]
-    //WinningCondition_ScriptableObject currentWinCondition;
+    public static CheckWinCondition_VS checkWinCondition_VS_instance;
+
+    private void Awake()
+    {
+        if (checkWinCondition_VS_instance == null)
+        {
+            checkWinCondition_VS_instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     //[SerializeField]
     int numberOfEnemiesToKill;
@@ -13,13 +24,12 @@ public class CheckWinCondition_VS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         //if(numberOfEnemiesToKill == 0)
         //{
         //    Debug.Log("Define The number of enemies to kill");
         //}
-        numberOfEnemiesToKill = GameObject.FindGameObjectsWithTag("Enemy").Length + 1;
-
+        numberOfEnemiesToKill = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     // Update is called once per frame
@@ -34,7 +44,6 @@ public class CheckWinCondition_VS : MonoBehaviour
 
     public void OnEnemyKilled()
     {
-        //currentWinCondition.ReduceEnemies();
         ReduceEnemies();
         if(numberOfEnemiesToKill <= 0)
         {
